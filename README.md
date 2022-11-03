@@ -44,7 +44,7 @@ node index.js
 ```
 
 
-You can view a walkthrough video demonstrating the functionality of the application [here](https://drive.google.com/file/d/1NGoD85I3A3ktlt3Kotn_GaRbRtpltjjg/view).
+You can view a walkthrough video demonstrating the functionality of the application [here](https://www.youtube.com/watch?v=X1XztVBEn68).
 
 
 The repo for this application can be found [here](https://github.com/bmckenzie88/module-12-literate-octo-telegram).
