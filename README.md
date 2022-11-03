@@ -34,7 +34,9 @@ This application uses the [MySQL2 package](https://www.npmjs.com/package/mysql2)
 npm i
 ```
 
-Once all necessary packages are installed, the application is invoked using the follwing command:
+Once all necessary packages are installed, the next step is to run mysql and source the schema.sql and seeds.sql files, in that order.
+
+Once the database has been created and seeded with mysql, the application is invoked using the follwing command:
 
 
 ```bash
@@ -42,10 +44,10 @@ node index.js
 ```
 
 
-You can view a walkthrough video demonstrating the functionality of the application [here](https://drive.google.com/file/d/1vE8wsipVqzo4oaWYre_Qy7U_CnmWxEJF/view).
+You can view a walkthrough video demonstrating the functionality of the application [here](https://drive.google.com/file/d/1NGoD85I3A3ktlt3Kotn_GaRbRtpltjjg/view).
 
 
-The repo for this application can be found [here](https://github.com/bmckenzie88/module-10-fuzzy-journey).
+The repo for this application can be found [here](https://github.com/bmckenzie88/module-12-literate-octo-telegram).
 
 
 ## License

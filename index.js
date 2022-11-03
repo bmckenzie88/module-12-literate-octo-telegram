@@ -1,18 +1,8 @@
-// const express = require("express");
 const figlet = require("figlet");
 const inquirer = require("inquirer");
-// Import and require mysql2
 const mysql = require("mysql2");
 const ctable = require("console.table");
 
-// const PORT = process.env.PORT || 3001;
-// const app = express();
-
-// Express middleware
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.json());
-
-// Connect to database
 const db = mysql.createConnection(
   {
     host: "localhost",
@@ -76,19 +66,14 @@ function askQuestion() {
               if (err) {
                 throw err;
               }
-              console.log(results);
               const roles = results.map((role) => role.title);
-              console.log(roles);
               db.query(
                 `
               SELECT CONCAT(employee.first_name,' ',employee.last_name) AS manager  
               FROM employee
               `,
                 function (err, results) {
-                  console.log(results);
                   const managers = results.map((obj) => obj.manager);
-
-                  console.log(managers);
                   inquirer
                     .prompt([
                       {
@@ -115,14 +100,11 @@ function askQuestion() {
                       },
                     ])
                     .then((response) => {
-                      console.log(response);
-                      console.log(response.empRole);
                       db.query(
                         `
                     SELECT role.id
                     FROM role WHERE role.title = '${response.empRole}'`,
                         function (err, results) {
-                          console.log(results[0].id);
                           const newRoleId = results[0].id;
                           db.query(
                             `
@@ -155,19 +137,15 @@ function askQuestion() {
               if (err) {
                 throw err;
               }
-              console.log(results);
               const roles = results.map((role) => role.title);
-              console.log(roles);
               db.query(
                 `
               SELECT CONCAT(employee.first_name,' ',employee.last_name) AS employee  
               FROM employee
               `,
                 function (err, results) {
-                  console.log(results);
+    
                   const employees = results.map((obj) => obj.employee);
-
-                  console.log(employees);
                   inquirer
                     .prompt([
                       {
@@ -185,24 +163,18 @@ function askQuestion() {
                       },
                     ])
                     .then((response) => {
-                      console.log(response);
-                      console.log(response.chosenEmp);
                       db.query(
                         `
                     SELECT role.id
                     FROM role WHERE role.title = '${response.newRole}'`,
                         function (err, results) {
-                          console.log(results);
-                          console.log(results[0].id);
                           const newRoleId = results[0].id;
                           db.query(
                             `
                           SELECT employee.id
                           FROM employee WHERE CONCAT(employee.first_name,' ',employee.last_name) = '${response.chosenEmp}'`,
-                            function (err, results) {
-                              console.log(results);
+                            function (err, results) {             
                               const chosenEmpId = results[0].id;
-
                               db.query(`
                             UPDATE employee
                             SET role_id = '${newRoleId}'
@@ -244,9 +216,7 @@ function askQuestion() {
               if (err) {
                 throw err;
               }
-              console.log(results);
               const departments = results.map((department) => department.name);
-              console.log(departments);
               inquirer
                 .prompt([
                   {
@@ -267,14 +237,11 @@ function askQuestion() {
                   },
                 ])
                 .then((response) => {
-                  console.log(response);
-                  console.log(response.newDepartment);
                   db.query(
                     `
                 SELECT department.id
                 FROM department WHERE department.name = '${response.newDepartment}'`,
                     function (err, results) {
-                      console.log(results[0].id);
                       const newDepId = results[0].id;
                       db.query(`
               INSERT INTO role (title,salary,department_id)
@@ -312,12 +279,10 @@ function askQuestion() {
               },
             ])
             .then((response) => {
-              console.log(response);
-              console.log(response.newDepartment);
               db.query(`
               INSERT INTO department (name)
               VALUES ('${response.newDepartment}')`);
-              console.log("\ndepartment added!\n");
+              console.log("\n department added!\n");
               askQuestion();
             });
 
