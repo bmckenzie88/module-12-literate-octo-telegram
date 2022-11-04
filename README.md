@@ -36,7 +36,7 @@ npm i
 
 Once all necessary packages are installed, the next step is to run mysql and source the schema.sql and seeds.sql files, in that order.
 
-Once the database has been created and seeded with mysql, the application is invoked using the follwing command:
+Once the database has been created and seeded with mysql, the application is invoked using the following command:
 
 
 ```bash
